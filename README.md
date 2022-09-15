@@ -3,8 +3,8 @@
 
 <br>
 
-File Name : minishell
-
+File Name : minishell <br>
+Description : Shell 구현
 
 <br>
 
