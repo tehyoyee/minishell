@@ -3,16 +3,13 @@
 
 <br>
 
-|||
-|:-:|:-:|
-|file name|minishell|
-|Description|shell 구현|
+File Name : minishell
+
 
 <br>
 
-||
-|:-:|
 |구현 기능|
+|:-:|
 |echo [-n] text|
 |cd|
 |export|
