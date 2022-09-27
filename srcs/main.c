@@ -11,19 +11,23 @@ int	set_terminal(char **envp)
 
 void	handler_sigint(int signum)
 {
-	if (signum == SIGINT)
-	{
-		printf("\n");
-		rl_on_new_line();
-		rl_replace_line("", 0);
-		rl_redisplay();
-	}
+	printf("\n");
+	rl_on_new_line();
+	rl_replace_line("", 0);
+	rl_redisplay();
+}
+
+void	handler_sigterm(int signum)
+{
+	printf("exit\n");
+	exit(0);
 }
 
 int	main(int argc, char *argv[], char *envp[])
 {
 	signal(SIGINT, handler_sigint);
 	signal(SIGQUIT, SIG_IGN);
+	signal(SIGTERM, handler_sigterm);
 	if (argc != 1)
 		return (-1);
 	while (1)

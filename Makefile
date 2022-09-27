@@ -12,9 +12,10 @@
 
 NAME = minishell
 
-CC = gcc
-# CFLAGS = -Wall -Wextra -Werror -c -lreadline
-CFLAGS = -c
+CC = cc
+# CFLAGS = -Wall -Wextra -Werror -I/Users/taehykim/.brew/opt/readline/include
+CFLAGS = -I/Users/taehykim/.brew/opt/readline/include
+LDFLAGS = -L/Users/taehykim/.brew/opt/readline/lib -lreadline
 RM = rm -f
 AR = ar
 CRS = crs
@@ -28,11 +29,10 @@ OBJS = $(SRCS:.c=.o)
 all: $(NAME)
 
 %.o: %.c
-		$(CC) $(CFLAGS) -I $(INC_DIR) $< -o $@
+		$(CC) $(CFLAGS) -c -I $(INC_DIR) $< -o $@
 
 $(NAME): $(OBJS)
-		$(CC) -o $@ $(OBJS) -lreadline
-
+		$(CC) $(LDFLAGS) -o $@ $(OBJS)
 clean:
 		$(RM) $(OBJS)
 
