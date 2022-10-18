@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/01 14:25:02 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/10/10 16:27:45 by wonjchoi         ###   ########.fr       */
+/*   Created: 2022/10/07 17:32:55 by wonjchoi          #+#    #+#             */
+/*   Updated: 2022/10/07 17:34:23 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "shell_cmd.h"
 
-# include <stdio.h>
-# include <termios.h>
-# include <readline/readline.h>
-# include <readline/history.h>
-
-# include "utils.h"
-# include "struct.h"
-# include "executor.h"
-# include "parse.h"
-
-#endif
+int	ft_env(t_env *cur)
+{
+	while (cur->key != 0)
+	{
+		ft_write(STDOUT_FILENO, cur->key, ft_strlen(cur->key));
+		ft_write(STDOUT_FILENO, "=", 1);
+		ft_write(STDOUT_FILENO, cur->value, ft_strlen(cur->value));
+		ft_write(STDOUT_FILENO, "\n", 1);
+		cur = cur->next;
+	}
+	return (EXIT_SUCCESS);
+}

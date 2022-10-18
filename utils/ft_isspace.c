@@ -1,26 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/01 14:25:02 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/10/10 16:27:45 by wonjchoi         ###   ########.fr       */
+/*   Created: 2022/10/07 13:42:38 by wonjchoi          #+#    #+#             */
+/*   Updated: 2022/10/07 13:43:27 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "utils.h"
 
-# include <stdio.h>
-# include <termios.h>
-# include <readline/readline.h>
-# include <readline/history.h>
-
-# include "utils.h"
-# include "struct.h"
-# include "executor.h"
-# include "parse.h"
-
-#endif
+int	ft_isspace(char c)
+{
+	if (c == ' ' || (9 <= c && c <= 13))
+		return (1);
+	return (0);
+}

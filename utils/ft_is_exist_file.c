@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_is_exist_file.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/01 14:25:02 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/10/10 16:27:45 by wonjchoi         ###   ########.fr       */
+/*   Created: 2022/09/30 18:37:25 by wonjchoi          #+#    #+#             */
+/*   Updated: 2022/09/30 18:38:53 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "utils.h"
 
-# include <stdio.h>
-# include <termios.h>
-# include <readline/readline.h>
-# include <readline/history.h>
+int	ft_is_exist_file(char *file_name)
+{
+	int	fd;
 
-# include "utils.h"
-# include "struct.h"
-# include "executor.h"
-# include "parse.h"
-
-#endif
+	fd = open(file_name, O_RDONLY);
+	close(fd);
+	if (fd == -1)
+		return (0);
+	else
+		return (1);
+}

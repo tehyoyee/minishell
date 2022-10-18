@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/01 14:25:02 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/10/10 16:27:45 by wonjchoi         ###   ########.fr       */
+/*   Created: 2022/09/28 15:31:54 by wonjchoi          #+#    #+#             */
+/*   Updated: 2022/10/01 14:05:51 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "utils.h"
 
-# include <stdio.h>
-# include <termios.h>
-# include <readline/readline.h>
-# include <readline/history.h>
+size_t	ft_strlen(const char *c)
+{
+	size_t	i;
 
-# include "utils.h"
-# include "struct.h"
-# include "executor.h"
-# include "parse.h"
-
-#endif
+	i = 0;
+	if (c[i] == '\0')
+		return (0);
+	while (c[i])
+		i++;
+	return (i);
+}

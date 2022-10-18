@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   wait_child.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/01 14:25:02 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/10/10 16:27:45 by wonjchoi         ###   ########.fr       */
+/*   Created: 2022/10/07 18:45:29 by wonjchoi          #+#    #+#             */
+/*   Updated: 2022/10/07 18:52:47 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "executor.h"
 
-# include <stdio.h>
-# include <termios.h>
-# include <readline/readline.h>
-# include <readline/history.h>
+void	wait_child(void)
+{
+	int	status;
+	int	signo;
 
-# include "utils.h"
-# include "struct.h"
-# include "executor.h"
-# include "parse.h"
-
-#endif
+	while (wait(&status) != -1)
+	{
+		if (WIFSIGNALED(status))
+		{
+			signo = WTERMSIG(status);
+			if (signo == SIGINT)
+				ft_putstr_fd("^C\n", STDERR_FILENO);
+			else if (signo == SIGQUIT)
+				ft_putstr_fd("^\\Quit: 3\n", STDERR_FILENO);
+			g_exit_code = 128 + signo;
+		}
+		else
+			g_exit_code = WEXITSTATUS(status);
+	}
+}

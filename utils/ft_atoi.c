@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/01 14:25:02 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/10/10 16:27:45 by wonjchoi         ###   ########.fr       */
+/*   Created: 2022/10/07 18:41:29 by wonjchoi          #+#    #+#             */
+/*   Updated: 2022/10/07 18:41:40 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "utils.h"
 
-# include <stdio.h>
-# include <termios.h>
-# include <readline/readline.h>
-# include <readline/history.h>
+int	ft_atoi(const char *str)
+{
+	long	ret;
+	int		sign;
 
-# include "utils.h"
-# include "struct.h"
-# include "executor.h"
-# include "parse.h"
-
-#endif
+	ret = 0;
+	sign = 1;
+	while (*str == ' ' || (9 <= *str && *str <= 13))
+		++str;
+	if (*str == '+' || *str == '-')
+		if (*str++ == '-')
+			sign *= -1;
+	while ('0' <= *str && *str <= '9')
+	{
+		ret = ret * 10 + (*str++ - '0');
+		if (ret < 0)
+			return ((sign + 1) / -2);
+	}
+	return (sign * ret);
+}

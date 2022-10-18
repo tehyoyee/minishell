@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_cd_util.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/01 14:25:02 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/10/10 16:27:45 by wonjchoi         ###   ########.fr       */
+/*   Created: 2022/10/03 15:35:15 by wonjchoi          #+#    #+#             */
+/*   Updated: 2022/10/07 15:15:47 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "shell_cmd.h"
 
-# include <stdio.h>
-# include <termios.h>
-# include <readline/readline.h>
-# include <readline/history.h>
+char	*concat_with_pwd(const char *key)
+{
+	char	*tmp;
+	char	*result;
 
-# include "utils.h"
-# include "struct.h"
-# include "executor.h"
-# include "parse.h"
+	tmp = ft_getcwd(NULL, 0);
+	result = ft_strjoin(key, tmp);
+	free(tmp);
+	return (result);
+}
 
-#endif
+void	export_pwd(t_env *env, const char *pwd)
+{
+	char	*tmp_pwd;
+
+	tmp_pwd = concat_with_pwd(pwd);
+	export_key_value(env, tmp_pwd);
+	free(tmp_pwd);
+}
