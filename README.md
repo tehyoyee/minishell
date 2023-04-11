@@ -2,16 +2,17 @@
 42Seoul Project
 
 <br>
+Bash 모방 프로그램 개발. shell command 구현 <br>
+참고자료 : [bash manual](https://www.gnu.org/savannah-checkouts/gnu/bash/manual/)<br>
 
-File Name : minishell <br>
-Description : Shell 구현
-
-<br>
+![minishell](./minishell_img.png)
 
 |구현 기능|
 |:-:|
 |echo [-n] text|
 |cd|
+|cat|
+|heredoc|
 |export|
 |unset|
 |env|
@@ -27,5 +28,4 @@ Description : Shell 구현
 |ls, pwd, cd, etc|
 <br>
 
-참고자료 : [bash manual](https://www.gnu.org/savannah-checkouts/gnu/bash/manual/)
 <br>
