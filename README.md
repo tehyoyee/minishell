@@ -1,4 +1,4 @@
-# minishell
+# minishell (참여: taehykim, wonjchoi)
 42Seoul Project
 
 <br>
